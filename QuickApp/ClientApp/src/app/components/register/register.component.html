@@ -1,0 +1,57 @@
+<div class="page-content" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+  <div>
+    <mat-card class="mat-elevation-z6">
+      <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form #form="ngForm" [formGroup]="registerForm" (ngSubmit)="register()" novalidate class="app-register-form">
+          <mat-form-field class="app-validate">
+            <input matInput formControlName="userName" placeholder="Username" autocomplete="off" (keydown.enter)="register()">
+            <mat-error *ngIf="userName.hasError('required')">
+              User name is <strong>required</strong> (minimum of 2 and maximum of 200 characters)
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="app-validate">
+            <input matInput formControlName="email" placeholder="Email" autocomplete="email" (keydown.enter)="register()">
+            <mat-error *ngIf="email.hasError('required')">
+              Email address is <strong>required</strong> (maximum of 200 characters)
+            </mat-error>
+            <mat-error *ngIf="!email.hasError('required') && email.hasError('email')">
+              Specified email is <strong>not valid</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="app-validate" formGroupName="password">
+            <input matInput formControlName="newPassword" placeholder="Password" autocomplete="new-password" (keydown.enter)="register()" type="password">
+            <mat-error *ngIf="newPassword.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="!newPassword.hasError('required') && newPassword.hasError('pattern')">
+              Password must contain at least: one uppercase letter, one lowercase letter, one digit, and any special character
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="app-validate" formGroupName="password">
+            <input matInput formControlName="confirmPassword" placeholder="Confirm Password" autocomplete="new-password" (keydown.enter)="register()" type="password">
+            <mat-error *ngIf="confirmPassword.hasError('required')">
+              Confirmation password is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="!confirmPassword.hasError('required') && confirmPassword.hasError('notEqual')">
+              Password and confirmation password <strong>do not match</strong>
+            </mat-error>
+          </mat-form-field>
+
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="isLoading" (click)="register()">
+          <mat-spinner *ngIf="isLoading" [diameter]="20"></mat-spinner>
+          REGISTER
+        </button>
+        <a mat-button routerLink="/login">CANCEL</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

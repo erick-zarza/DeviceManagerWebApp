@@ -1,0 +1,45 @@
+<div class="page-content" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+  <mat-card *ngIf="!foundEmail" class="mat-elevation-z6">
+    <mat-card-content>
+      <div fxLayoutAlign="center center">
+        <mat-spinner *ngIf="isLoading" [diameter]="20"></mat-spinner>
+        {{message}}
+      </div>
+      <button *ngIf="!message && !isLoading" mat-raised-button color="primary" routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span>{{'notFound.backToHome' | translate}}</span>
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="foundEmail" class="mat-elevation-z6">
+    <mat-card-header>
+      <mat-card-title>Link {{provider}} account</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #form="ngForm" [formGroup]="loginForm" (ngSubmit)="linkAccountAndLogin()" novalidate class="app-login-form">
+        <div fxLayoutAlign="center center" class="mat-typography found-email-notice">
+          We found an account with this email address. Login with your existing password to link with your {{provider}} account.
+        </div>
+        <mat-form-field class="app-validate">
+          <input matInput formControlName="email" placeholder="Email" autocomplete="email">
+        </mat-form-field>
+
+        <mat-form-field class="app-validate">
+          <input matInput formControlName="password" placeholder="Password" autocomplete="current-password" (keydown.enter)="linkAccountAndLogin()" type="password">
+          <mat-error *ngIf="passwordControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="isLoading" (click)="linkAccountAndLogin()">
+        <mat-spinner *ngIf="isLoading" [diameter]="20"></mat-spinner>{{'mainMenu.Login' | translate | uppercase}}
+      </button>
+      <div fxFlex></div>
+      <a mat-button routerLink="/recoverpassword">FORGOT PASSWORD</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
