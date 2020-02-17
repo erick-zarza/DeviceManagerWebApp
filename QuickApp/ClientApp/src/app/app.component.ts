@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     isAdminExpanded = false;
     removePrebootScreen: boolean;
     newNotificationCount = 0;
-    appTitle = 'QuickApp Pro';
+    appTitle = 'QuickApp';
     appLogo = require('./assets/images/logo-white.png');
 
     mobileQuery: MediaQueryList;

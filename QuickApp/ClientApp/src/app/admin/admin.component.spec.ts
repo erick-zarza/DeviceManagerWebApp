@@ -1,6 +1,6 @@
 // =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+// Email: info@somesite.com
+// www.somesite.com/templates
 // =============================
 
 import { TestBed, async } from '@angular/core/testing';

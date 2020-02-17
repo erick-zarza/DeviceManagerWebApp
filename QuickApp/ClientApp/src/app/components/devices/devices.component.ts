@@ -15,7 +15,7 @@ import { Role } from '../../models/role.model';
 import { Permission } from '../../models/permission.model';
 import { EditUserDialogComponent } from 'src/app/admin/edit-user-dialog/edit-user-dialog.component';
 import { DeviceService } from '../../services/device.service';
-
+import { DeviceDetail } from '../../models/deviceDetail.model';
 
 @Component({
   selector: 'devices',
@@ -28,10 +28,14 @@ export class DevicesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   displayedColumns = ['name', 'serialNumber', 'registrationDate', 'firmwareVersion'];
+  displayedDetailColumns = ['deviceId','id', 'temperaturC', 'airHumidity', 'carbonMonoxide', 'healthStatus', 'timeStamp', 'queueItemString'];
+
   dataSource: MatTableDataSource<Device>;
+  dataDetailSource: MatTableDataSource<DeviceDetail>;
   sourceDevice: Device;
   loadingIndicator: boolean;
   allRoles: Role[] = [];
+  isDeviceDetail: boolean = false;
 
   constructor(
     private alertService: AlertService,
@@ -40,13 +44,14 @@ export class DevicesComponent implements OnInit, AfterViewInit {
     private snackBar: MatSnackBar,
     private dialog: MatDialog) {
 
-
-    // if (this.canManageUsers) {
-    //   this.displayedColumns.push('actions');
-    // }
+      
+   
+    this.displayedColumns.push('actions');
+    
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
+    this.dataDetailSource = new MatTableDataSource();
   }
 
   ngOnInit() {
@@ -83,17 +88,20 @@ export class DevicesComponent implements OnInit, AfterViewInit {
     this.alertService.startLoadingMessage();
     this.loadingIndicator = true;
 
-    // if (this.canViewRoles) {
-    //   this.accountService.getUsersAndRoles().subscribe(
-    //     results => this.onDataLoadSuccessful(results[0], results[1]),
-    //     error => this.onDataLoadFailed(error)
-    //   );
-    // } else {
       this.deviceService.getDevices().subscribe(
-        devices => this.onDataLoadSuccessful(devices/*, this.accountService.currentUser.roles.map(r => new Role(r))*/),
+        devices => this.onDataLoadSuccessful(devices),
         error => this.onDataLoadFailed(error)
       );
-    // }
+  }
+ 
+  deviceDetails(device: Device) {
+    this.alertService.startLoadingMessage();
+    this.loadingIndicator = true;
+    this.deviceService.getQueueItems(device.id).subscribe(
+     
+      deviceDetail => this.onDetailDataLoadSuccessful(deviceDetail),
+      error => this.onDataLoadFailed(error)
+    );
   }
 
   private onDataLoadSuccessful(devices: Device[]/*, roles: Role[]*/) {
@@ -102,6 +110,20 @@ export class DevicesComponent implements OnInit, AfterViewInit {
     this.loadingIndicator = false;
     this.dataSource.data = devices;
     console.log(this.dataSource.data);
+  }
+
+  private onDetailDataLoadSuccessful(deviceDetail: DeviceDetail[]) {
+    if (deviceDetail.length > 0) {
+      this.dataDetailSource.data = deviceDetail;
+      this.isDeviceDetail = true;
+    }
+    else {
+      this.isDeviceDetail = false;
+    }
+
+    this.alertService.stopLoadingMessage();
+    this.loadingIndicator = false;
+        
   }
 
   private onDataLoadFailed(error: any) {

@@ -10,6 +10,7 @@ import { UserEdit } from '../models/user-edit.model';
 import { Device } from '../models/device.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { DeviceDetail } from '../models/deviceDetail.model';
 
 export type RolesChangedOperation = 'add' | 'delete' | 'modify';
 export interface RolesChangedEventArg { roles: Role[] | string[]; operation: RolesChangedOperation; }
@@ -29,14 +30,18 @@ export class DeviceService {
         private authService: AuthService,
         private deviceEndpoint: DeviceEndpoint) {
 
-    }
+    }k
 
     // getDevices() {
     //     return this.deviceEndpoint.getDeviceEndpoint<Device[]>();
     // }
 
     getDevices(): Observable<Device[]> {
-        return this.http.get<Device[]>(this.baseURL + "device")
+        return this.http.get<Device[]>(this.baseURL + "device");
+      }
+
+      getQueueItems(deviceId: string): Observable<DeviceDetail[]> {
+        return this.http.get<DeviceDetail[]>(this.baseURL + "queueitem/" + deviceId);
       }
 }
 

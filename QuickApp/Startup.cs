@@ -1,6 +1,6 @@
 // =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+// Email: info@somesite.com
+// www.somesite.com/templates
 // =============================
 
 using AutoMapper;
@@ -28,6 +28,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AppPermissions = DAL.Core.ApplicationPermissions;
+using DeviceManagerApp.Data;
+using DAL.Repositories.Interfaces;
 
 namespace QuickApp
 {
@@ -52,6 +54,9 @@ namespace QuickApp
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationsAssembly)));
+
+            //DocumentDB Cosmos SQLAPI
+            services.AddSingleton<IDocumentDBRepository<QueueItem>>(new DocumentDBRepository<QueueItem>());
 
             // add identity
             services.AddIdentity<ApplicationUser, ApplicationRole>()

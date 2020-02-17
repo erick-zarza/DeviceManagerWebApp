@@ -1,6 +1,6 @@
 ﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+// Email: info@somesite.com
+// www.somesite.com/templates
 // =============================
 
 using DAL.Models;
@@ -63,8 +63,8 @@ namespace DAL
                 if (!string.IsNullOrWhiteSpace(_defaultRoleName))
                     await EnsureRoleAsync(_defaultRoleName, "Default public role", new string[] { });
 
-                await CreateUserAsync("admin", "tempP@ss123", "Inbuilt Administrator", "admin@ebenmonney.com", "+1 (123) 000-0000", new string[] { adminRoleName });
-                await CreateUserAsync("user", "tempP@ss123", "Inbuilt Standard User", "user@ebenmonney.com", "+1 (123) 000-0001", new string[] { userRoleName });
+                await CreateUserAsync("admin", "tempP@ss123", "Inbuilt Administrator", "admin@somesite.com", "+1 (123) 000-0000", new string[] { adminRoleName });
+                await CreateUserAsync("user", "tempP@ss123", "Inbuilt Standard User", "user@somesite.com", "+1 (123) 000-0001", new string[] { userRoleName });
 
                 _logger.LogInformation("Inbuilt account generation completed");
             }
@@ -78,7 +78,7 @@ namespace DAL
                 Customer cust_1 = new Customer
                 {
                     Name = "Ebenezer Monney",
-                    Email = "contact@ebenmonney.com",
+                    Email = "contact@somesite.com",
                     Gender = Gender.Male,
                     DateCreated = DateTime.UtcNow,
                     DateModified = DateTime.UtcNow
@@ -241,12 +241,68 @@ namespace DAL
                     FirmwareVersion = "fv1265"
                 };
 
+                Device device_5 = new Device
+                {
+                    Name = "AC Device P",
+                    SerialNumber = "sr05433",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fv1dd34"
+                };
+
+                Device device_6 = new Device
+                {
+                    Name = "AC Device 09",
+                    SerialNumber = "sr056d84",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fv1ddfd33"
+                };
+
+                Device device_7 = new Device
+                {
+                    Name = "AC Device ACp",
+                    SerialNumber = "sr0dfd85",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fv1dfs6"
+                };
+
+                Device device_8 = new Device
+                {
+                    Name = "AC Device BBB",
+                    SerialNumber = "sr0fd6",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fvfd65"
+                };
+
+                Device device_9 = new Device
+                {
+                    Name = "AC Device Upstaris",
+                    SerialNumber = "sr05983",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fv1234"
+                };
+
+                Device device_10 = new Device
+                {
+                    Name = "AC Device AAA",
+                    SerialNumber = "sr05f84",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fvfdds33"
+                };
+
+             
+
                 _context.Devices.Add(device_1);
                 _context.Devices.Add(device_2);
                 _context.Devices.Add(device_3);
                 _context.Devices.Add(device_4);
+                _context.Devices.Add(device_5);
+                _context.Devices.Add(device_6);
+                _context.Devices.Add(device_7);
+                _context.Devices.Add(device_8);
+                _context.Devices.Add(device_9);
+                _context.Devices.Add(device_10);
 
-            
+
 
                 await _context.SaveChangesAsync();
 

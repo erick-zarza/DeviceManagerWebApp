@@ -1,6 +1,6 @@
 // =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+// Email: info@somesite.com
+// www.somesite.com/templates
 // =============================
 
 import { TestBed, async } from '@angular/core/testing';
@@ -79,10 +79,10 @@ describe('AppComponent', () => {
         expect(app).toBeTruthy();
     });
 
-    it(`should have as title 'QuickApp Pro'`, () => {
+    it(`should have as title 'QuickApp'`, () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance as AppComponent;
-        expect(app.appTitle).toEqual('QuickApp Pro');
+        expect(app.appTitle).toEqual('QuickApp');
     });
 
     it(`should render 'QuickApp' in a p tag`, () => {

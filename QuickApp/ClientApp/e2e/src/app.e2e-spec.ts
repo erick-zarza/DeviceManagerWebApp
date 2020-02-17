@@ -1,6 +1,6 @@
 // =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+// Email: info@somesite.com
+// www.somesite.com/templates
 // =============================
 
 import { AppPage } from './app.po';
@@ -12,8 +12,8 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display application title: QuickApp Pro', () => {
+  it('should display application title: QuickApp', () => {
     page.navigateTo();
-    expect(page.getAppTitle()).toEqual('QuickApp Pro');
+    expect(page.getAppTitle()).toEqual('QuickApp');
   });
 });

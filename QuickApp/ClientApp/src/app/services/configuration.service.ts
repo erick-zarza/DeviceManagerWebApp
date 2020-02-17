@@ -1,6 +1,6 @@
 // =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+// Email: info@somesite.com
+// www.somesite.com/templates
 // =============================
 
 import { Injectable } from '@angular/core';
@@ -104,7 +104,7 @@ export class ConfigurationService {
     public loginUrl = environment.loginUrl;
     public googleClientId = environment.googleClientId;
     public facebookClientId = environment.facebookClientId;
-    public fallbackBaseUrl = 'https://quickapp-pro.ebenmonney.com';
+    public fallbackBaseUrl = 'https://quickapp-pro.somesite.com';
     // ***End of defaults***
 
     private _language: string = null;

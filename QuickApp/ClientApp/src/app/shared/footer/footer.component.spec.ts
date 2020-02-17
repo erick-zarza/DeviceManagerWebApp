@@ -1,6 +1,6 @@
 // =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+// Email: info@somesite.com
+// www.somesite.com/templates
 // =============================
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -28,7 +28,7 @@ describe('Footer', () => {
       .querySelector('.app-footer-link a');
     const href = link.getAttribute('href');
     const text = link.textContent;
-    expect(href).toContain('https://www.ebenmonney.com');
-    expect(text).toContain('www.ebenmonney.com');
+    expect(href).toContain('https://www.somesite.com');
+    expect(text).toContain('www.somesite.com');
   });
 });

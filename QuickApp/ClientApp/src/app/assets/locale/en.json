@@ -99,8 +99,19 @@
       "SerialNumber": "Serial Number",
       "RegistrationDate": "Registration Date",
       "FirmwareVersion": "Firmware Version",
-      "Search": "Search for Device"
+      "Search": "Search for Device",
+      "DeviceDetail": "Device Detail"
       
+    },
+    "details": {
+      "Id": "Occurrence Id",
+      "DeviceId": "Device Id",
+      "TemperaturC": "Temperature (C)",
+      "AirHumidity": "Air Humidity",
+      "CarbonMonoxide": "CO2",
+      "HealthStatus": "Health Status",
+      "QueueItemString": "Webhook => Queueu",
+      "TimeStamp": "Status Date"
     },
     "editor": {
       "JobTitle": "Job Title",

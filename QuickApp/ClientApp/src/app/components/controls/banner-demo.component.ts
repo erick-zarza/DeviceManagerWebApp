@@ -1,6 +1,6 @@
 // =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+// Email: info@somesite.com
+// www.somesite.com/templates
 // =============================
 
 import { Component, OnInit } from '@angular/core';
@@ -37,7 +37,7 @@ export class BannerDemoComponent implements OnInit {
       img: require('../../assets/images/demo/banner4.png'),
       alt: 'Eben Monney',
       caption: 'Follow me on social media for updates and tips on using this startup project',
-      link: 'https://www.ebenmonney.com/about'
+      link: 'https://www.somesite.com/about'
     },
   ];
 

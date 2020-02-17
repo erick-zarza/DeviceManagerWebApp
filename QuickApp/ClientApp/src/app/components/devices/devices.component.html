@@ -31,24 +31,76 @@
         <mat-cell fxFlex="25%" *matCellDef="let row"> {{row.firmwareVersion}} </mat-cell>
       </ng-container>
 
-      <!-- <ng-container *ngIf="canManageUsers" matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef fxFlex="170px">
-          <button *ngIf="canAssignRoles" mat-button color="primary" matTooltip="{{'users.management.NewUser' | translate}}" (click)="editUser()">
-            <mat-icon class="mat-button-icon">person_add</mat-icon>{{'users.management.NewUser' | translate}}
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef fxFlex="200px">
+          <button mat-button color="primary" matTooltip="{{'devices.management.DeviceDetail' | translate}}">
+            <mat-icon class="mat-button-icon">details</mat-icon>{{'devices.management.DeviceDetail' | translate}}
           </button>
         </mat-header-cell>
-        <mat-cell *matCellDef="let user" fxFlex="140px" fxFlexOffset="30px">
-          <button mat-icon-button matTooltip="{{'users.management.Edit' | translate}}" (click)="editUser(user)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="{{'users.management.Delete' | translate}}" (click)="confirmDelete(user)">
-            <mat-icon color="warn">delete</mat-icon>
+        <mat-cell *matCellDef="let device" fxFlex="140px" fxFlexOffset="30px">
+          <button mat-icon-button matTooltip="{{'devices.management.DeviceDetail' | translate}}" (click)="deviceDetails(device)">
+            <mat-icon>details</mat-icon>
           </button>
         </mat-cell>
-      </ng-container> -->
+      </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+<br/>
+<div class="clearfix"></div>
+      <statistics-demo></statistics-demo>
+<br/>
+  <div class="mat-elevation-z8" *ngIf="isDeviceDetail">
+    <mat-progress-bar *ngIf="loadingIndicator" mode="query"></mat-progress-bar>
+    <mat-table [dataSource]="dataDetailSource" matSort>
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell fxFlex="80%" *matHeaderCellDef mat-sort-header> {{'devices.details.Id' | translate}} </mat-header-cell>
+        <mat-cell fxFlex="80%" *matCellDef="let row"> {{row.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="deviceId">
+        <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header> {{'devices.details.DeviceId' | translate}} </mat-header-cell>
+        <mat-cell fxFlex="10%" *matCellDef="let row"> {{row.deviceId}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="temperaturC">
+        <mat-header-cell fxFlex="15%" *matHeaderCellDef mat-sort-header> {{'devices.details.TemperaturC' | translate}} </mat-header-cell>
+        <mat-cell fxFlex="15%" *matCellDef="let row"> {{row.temperaturC}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="airHumidity">
+        <mat-header-cell fxFlex="25%" *matHeaderCellDef mat-sort-header> {{'devices.details.AirHumidity' | translate}} </mat-header-cell>
+        <mat-cell fxFlex="25%" *matCellDef="let row"> {{row.airHumidity}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="carbonMonoxide">
+        <mat-header-cell fxFlex="25%" *matHeaderCellDef mat-sort-header> {{'devices.details.CarbonMonoxide' | translate}} </mat-header-cell>
+        <mat-cell fxFlex="25%" *matCellDef="let row"> {{row.carbonMonoxide}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="healthStatus">
+        <mat-header-cell fxFlex="25%" *matHeaderCellDef mat-sort-header> {{'devices.details.HealthStatus' | translate}} </mat-header-cell>
+        <mat-cell fxFlex="25%" *matCellDef="let row"> {{row.healthStatus}} </mat-cell>
+      </ng-container>
+
+      
+
+      <ng-container matColumnDef="timeStamp">
+        <mat-header-cell fxFlex="25%" *matHeaderCellDef mat-sort-header> {{'devices.details.TimeStamp' | translate}} </mat-header-cell>
+        <mat-cell fxFlex="25%" *matCellDef="let row"> {{row.timeStamp  | date:'medium' }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="queueItemString">
+        <mat-header-cell fxFlex="25%" *matHeaderCellDef mat-sort-header> {{'devices.details.QueueItemString' | translate}} </mat-header-cell>
+        <mat-cell fxFlex="25%" *matCellDef="let row"> {{row.queueItemString}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedDetailColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedDetailColumns;">
       </mat-row>
     </mat-table>
 
