@@ -1,9 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +11,7 @@ namespace DAL
     public class UnitOfWork : IUnitOfWork
     {
         readonly ApplicationDbContext _context;
-
+        IDeviceRepository _devices;
         ICustomerRepository _customers;
         IProductRepository _products;
         IOrdersRepository _orders;
@@ -38,6 +33,17 @@ namespace DAL
                     _customers = new CustomerRepository(_context);
 
                 return _customers;
+            }
+        }
+
+        public IDeviceRepository Devices
+        {
+            get
+            {
+                if (_devices == null)
+                    _devices = new DevicesRepository(_context);
+
+                return _devices;
             }
         }
 

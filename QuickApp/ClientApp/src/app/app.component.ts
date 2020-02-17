@@ -1,8 +1,3 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
 import { Component, ChangeDetectorRef, ViewChild, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Router, NavigationStart } from '@angular/router';
@@ -279,6 +274,10 @@ export class AppComponent implements OnInit {
     }
 
     get canViewCustomers() {
+        return this.accountService.userHasPermission(Permission.viewUsersPermission);
+    }
+
+    get canViewDevices() {
         return this.accountService.userHasPermission(Permission.viewUsersPermission);
     }
 

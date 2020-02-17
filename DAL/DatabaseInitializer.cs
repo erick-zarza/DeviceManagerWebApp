@@ -204,6 +204,54 @@ namespace DAL
 
                 _logger.LogInformation("Seeding initial data completed");
             }
+
+            if (!await _context.Devices.AnyAsync())
+            {
+                _logger.LogInformation("Seeding initial data");
+
+                Device device_1 = new Device
+                {
+                    Name = "AC Device Upstaris",
+                    SerialNumber = "sr05983",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fv1234"
+                };
+
+                Device device_2 = new Device
+                {
+                    Name = "AC Device Downstairs",
+                    SerialNumber = "sr05984",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fv1233"
+                };
+
+                Device device_3 = new Device
+                {
+                    Name = "AC Device Garage",
+                    SerialNumber = "sr05985",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fv1236"
+                };
+
+                Device device_4 = new Device
+                {
+                    Name = "AC Device Basement",
+                    SerialNumber = "sr05986",
+                    RegistrationDate = DateTime.UtcNow,
+                    FirmwareVersion = "fv1265"
+                };
+
+                _context.Devices.Add(device_1);
+                _context.Devices.Add(device_2);
+                _context.Devices.Add(device_3);
+                _context.Devices.Add(device_4);
+
+            
+
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation("Seeding initial data completed");
+            }
         }
 
 

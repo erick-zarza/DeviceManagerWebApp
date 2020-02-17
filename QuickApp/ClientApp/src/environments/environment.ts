@@ -13,7 +13,8 @@ export const environment = {
     tokenUrl: null, // For IdentityServer/Authorization Server API. You can set to null if same as baseUrl
     loginUrl: '/login',
     googleClientId: '439188608778-n9a4ulafkm5s8f2k4p8afglcrvohht3h.apps.googleusercontent.com',
-    facebookClientId: '2356966407766363'
+    facebookClientId: '2356966407766363',
+    apiURL: "https://localhost:44350/api/"
 };
 
 /*

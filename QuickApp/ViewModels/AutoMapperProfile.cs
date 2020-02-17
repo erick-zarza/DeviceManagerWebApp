@@ -1,9 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using AutoMapper;
+﻿using AutoMapper;
 using DAL.Core;
 using DAL.Models;
 using Microsoft.AspNetCore.Identity;
@@ -57,6 +52,9 @@ namespace QuickApp.ViewModels
                 .ConvertUsing(s => (PermissionViewModel)ApplicationPermissions.GetPermissionByValue(s.ClaimValue));
 
             CreateMap<Customer, CustomerViewModel>()
+                .ReverseMap();
+
+            CreateMap<Device, DeviceViewModel>()
                 .ReverseMap();
 
             CreateMap<Product, ProductViewModel>()

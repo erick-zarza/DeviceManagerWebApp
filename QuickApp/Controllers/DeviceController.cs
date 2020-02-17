@@ -13,15 +13,14 @@ namespace QuickApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class DeviceController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
         private readonly IEmailSender _emailSender;
 
-
-        public CustomerController(IMapper mapper, IUnitOfWork unitOfWork, ILogger<CustomerController> logger, IEmailSender emailSender)
+        public DeviceController(IMapper mapper, IUnitOfWork unitOfWork, ILogger<DeviceController> logger, IEmailSender emailSender)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
@@ -29,20 +28,18 @@ namespace QuickApp.Controllers
             _emailSender = emailSender;
         }
 
-
-
         // GET: api/values
         [HttpGet]
         public IActionResult Get()
         {
-            var allCustomers = _unitOfWork.Customers.GetAllCustomersData();
-            return Ok(_mapper.Map<IEnumerable<CustomerViewModel>>(allCustomers));
+            var allDevices = _unitOfWork.Devices.GetAllDevicesData();
+            return Ok(_mapper.Map<IEnumerable<DeviceViewModel>>(allDevices));
         }
 
 
 
         [HttpGet("throw")]
-        public IEnumerable<CustomerViewModel> Throw()
+        public IEnumerable<DeviceViewModel> Throw()
         {
             throw new InvalidOperationException("This is a test exception: " + DateTime.Now);
         }

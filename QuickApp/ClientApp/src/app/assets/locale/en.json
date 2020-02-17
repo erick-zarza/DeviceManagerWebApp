@@ -12,6 +12,7 @@
     "Home": "Home",
     "Appointments": "Appointments",
     "Customers": "Customers",
+    "Devices": "Devices",
     "Products": "Products",
     "Orders": "Orders",
     "About": "About",
@@ -26,6 +27,7 @@
   "pageHeader": {
     "Dashboard": "Dashboard",
     "Customers": "Customers",
+    "Devices": "Devices",
     "Products": "Products",
     "Orders": "Orders",
     "NotFound": "Not Found",
@@ -90,6 +92,47 @@
     "DashboardTodoHint": "Shows demo todo widget on the dashboard",
     "DashboardBanner": "Dashboard Banner",
     "DashboardBannerHint": "Show demo information banner widget on the dashboard"
+  },
+  "devices": {
+    "management": {
+      "Name": "Name",
+      "SerialNumber": "Serial Number",
+      "RegistrationDate": "Registration Date",
+      "FirmwareVersion": "Firmware Version",
+      "Search": "Search for Device"
+      
+    },
+    "editor": {
+      "JobTitle": "Job Title",
+      "UserName": "User Name",
+      "UserNameRequired": "User name is required (minimum of 2 and maximum of 200 characters)",
+      "Password": "Password",
+      "PasswordHint": "Your password is required when changing user name",
+      "CurrentPasswordRequired": "Current password is required",
+      "Email": "Email",
+      "SendVerificationEmail": "Resend verification email",
+      "EmailRequired": "Email address is required (maximum of 200 characters)",
+      "InvalidEmail": "Specified email is not valid",
+      "ChangePassword": "Change Password",
+      "CurrentPassword": "Current Password",
+      "NewPassword": "New Password",
+      "NewPasswordRequired": "New password is required",
+      "NewPasswordRules": "The new password must contain at least: one uppercase letter, one lowercase letter, one digit, and any special character",
+      "ConfirmPassword": "Confirm Password",
+      "ConfirmationPasswordRequired": "Confirmation password is required",
+      "PasswordMismatch": "New password and confirmation password do not match",
+      "Roles": "Roles",
+      "FullName": " Full Name",
+      "RoleRequired": " Role is required",
+      "PhoneNumber": "Phone Number",
+      "Enabled": "Enabled",
+      "Unblock": "Unblock",
+      "Close": "Close",
+      "Edit": "Edit",
+      "Cancel": "Cancel",
+      "Save": "Save",
+      "Saving": "Saving..."
+    }
   },
   "users": {
     "management": {

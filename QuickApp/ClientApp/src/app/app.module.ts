@@ -54,6 +54,9 @@ import { TodoDemoComponent } from './components/controls/todo-demo.component';
 import { StatisticsDemoComponent } from './components/controls/statistics-demo.component';
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { AddTaskDialogComponent } from './components/controls/add-task-dialog.component';
+import { DevicesComponent } from './components/devices/devices.component';
+import { DeviceService } from './services/device.service';
+import { DeviceEndpoint } from './services/device-endpoint.service';
 
 @NgModule({
     imports: [
@@ -85,13 +88,14 @@ import { AddTaskDialogComponent } from './components/controls/add-task-dialog.co
         ResetPasswordComponent,
         HomeComponent,
         CustomersComponent,
+        DevicesComponent,
         ProductsComponent,
         OrdersComponent,
         AboutComponent,
         NotFoundComponent,
         NotificationsViewerComponent,
         AddTaskDialogComponent,
-        StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent
+        StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent, DevicesComponent
     ],
     providers: [
         { provide: ErrorHandler, useClass: AppErrorHandler },
@@ -102,6 +106,8 @@ import { AddTaskDialogComponent } from './components/controls/add-task-dialog.co
         NotificationService,
         NotificationEndpoint,
         AccountService,
+        DeviceService,
+        DeviceEndpoint,
         AccountEndpoint,
         LocalStoreManager,
         OidcHelperService
