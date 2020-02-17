@@ -10,5 +10,5 @@ export const environment = {
     loginUrl: '/login',
     googleClientId: null,
     facebookClientId: null,
-    apiURL: "https://localhost:44350/api/"
+    apiURL: "https://theoremprototype.azurewebsites.net/api/"
 };

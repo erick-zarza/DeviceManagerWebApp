@@ -192,8 +192,8 @@ namespace QuickApp
             // Delegation Grant
             services.AddScoped<IGrantValidationService, DelegationGrantValidationService>();
 
-            //Http Clients
-            services.AddHttpClient<TwitterController>();
+            ////Http Clients
+            //services.AddHttpClient<TwitterController>();
         }
 
 

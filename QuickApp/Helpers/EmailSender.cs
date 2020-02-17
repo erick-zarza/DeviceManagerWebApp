@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using Microsoft.Extensions.Options;
+using System.Net.Mail;
+using System.Net;
 
 namespace QuickApp.Helpers
 {
@@ -91,19 +93,25 @@ namespace QuickApp.Helpers
                 if (config == null)
                     config = _config;
 
-                using (var client = new SmtpClient())
+                using (var client = new System.Net.Mail.SmtpClient(config.Host, config.Port))
                 {
-                    if (!config.UseSSL)
-                        client.ServerCertificateValidationCallback = (object sender2, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) => true;
+                    //if (!config.UseSSL)
+                    //    client.ServerCertificateValidationCallback = (object sender2, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) => true;
 
-                    await client.ConnectAsync(config.Host, config.Port, config.UseSSL).ConfigureAwait(false);
-                    client.AuthenticationMechanisms.Remove("XOAUTH2");
+                    //await client.ConnectAsync(config.Host, config.Port, config.UseSSL).ConfigureAwait(false);
+                    ////client.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                    if (!string.IsNullOrWhiteSpace(config.Username))
-                        await client.AuthenticateAsync(config.Username, config.Password).ConfigureAwait(false);
+                    //if (!string.IsNullOrWhiteSpace(config.Username))
+                    //    await client.AuthenticateAsync(config.Username, config.Password).ConfigureAwait(false);
 
-                    await client.SendAsync(message).ConfigureAwait(false);
-                    await client.DisconnectAsync(true).ConfigureAwait(false);
+                    //await client.SendAsync(message).ConfigureAwait(false);
+                    //await client.DisconnectAsync(true).ConfigureAwait(false);
+
+                    client.Credentials = new NetworkCredential(config.Username, config.Password);
+                    client.EnableSsl = true;
+
+
+                    await client.SendMailAsync(sender.Address, recepients[0].Address, subject, System.Web.HttpUtility.HtmlEncode(body));
                 }
 
                 return (true, null);

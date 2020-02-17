@@ -10,7 +10,7 @@
   "homepage": "https://www.somesite.com/quickapp-pro",
   "scripts": {
     "ng": "ng",
-    "start": "run-p theme \"serve -- {@}\" --",
+    "start": "ng serve",
     "serve": "ng serve",
     "theme": "sass --watch --style=compressed --no-source-map src/app/assets/themes:src/assets/themes",
     "build": "ng build",
