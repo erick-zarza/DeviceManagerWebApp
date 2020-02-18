@@ -51,9 +51,15 @@
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
-<br/>
+  <br />
 
-<br/>
+  <br />
+
+  <div class="search-box" *ngIf="isDeviceDetail">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilterDetails($event.target.value)" placeholder="{{'devices.details.Search' | translate}}">
+    </mat-form-field>
+  </div>
   <div class="mat-elevation-z8" *ngIf="isDeviceDetail">
     <mat-progress-bar *ngIf="loadingIndicator" mode="query"></mat-progress-bar>
     <mat-table [dataSource]="dataDetailSource" matSort>
@@ -86,7 +92,7 @@
         <mat-cell fxFlex="25%" *matCellDef="let row"> {{row.healthStatus}} </mat-cell>
       </ng-container>
 
-      
+
 
       <ng-container matColumnDef="timeStamp">
         <mat-header-cell fxFlex="25%" *matHeaderCellDef mat-sort-header> {{'devices.details.TimeStamp' | translate}} </mat-header-cell>

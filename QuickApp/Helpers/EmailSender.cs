@@ -13,6 +13,7 @@ using System.Net.Security;
 using Microsoft.Extensions.Options;
 using System.Net.Mail;
 using System.Net;
+using System.Web;
 
 namespace QuickApp.Helpers
 {
@@ -86,7 +87,8 @@ namespace QuickApp.Helpers
             message.From.Add(sender);
             message.To.AddRange(recepients);
             message.Subject = subject;
-            message.Body = isHtml ? new BodyBuilder { HtmlBody = body }.ToMessageBody() : new TextPart("plain") { Text = body };
+            message.Body = new TextPart("plain") { Text = body };
+
 
             try
             {
@@ -111,7 +113,7 @@ namespace QuickApp.Helpers
                     client.EnableSsl = true;
 
 
-                    await client.SendMailAsync(sender.Address, recepients[0].Address, subject, System.Web.HttpUtility.HtmlEncode(body));
+                    await client.SendMailAsync(sender.Address, recepients[0].Address, subject, body);
                 }
 
                 return (true, null);

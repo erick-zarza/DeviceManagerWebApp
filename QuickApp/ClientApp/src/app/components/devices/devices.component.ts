@@ -67,9 +67,14 @@ export class DevicesComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue;
   }
 
+  public applyFilterDetails(filterValue: string) {
+    this.dataDetailSource.filter = filterValue;
+  }
+
   private refresh() {
     // Causes the filter to refresh there by updating with recently added data.
     this.applyFilter(this.dataSource.filter);
+    this.applyFilterDetails(this.dataDetailSource.filter);
   }
 
   // private updateUsers(user: User) {

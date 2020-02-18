@@ -111,7 +111,8 @@
       "CarbonMonoxide": "CO2",
       "HealthStatus": "Health Status",
       "QueueItemString": "Webhook => Queueu",
-      "TimeStamp": "Status Date"
+      "TimeStamp": "Status Date",
+      "Search": "Search for Device Details"
     },
     "editor": {
       "JobTitle": "Job Title",
